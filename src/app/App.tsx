@@ -5,8 +5,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Welcome from './components/Welcome/Welcome';
 
 function App(): JSX.Element {
-  const [count, setCount] = useState<number>(0);
-
   return (
     <Router>
       <div className={styles.App}>
