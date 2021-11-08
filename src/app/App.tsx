@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import styles from './App.module.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Welcome from './components/Welcome/Welcome';
 
 function App(): JSX.Element {
@@ -11,43 +11,34 @@ function App(): JSX.Element {
     <Router>
       <div className={styles.App}>
         <header className={styles['App-header']}>
+          <div>
+            <Link to="/about">About</Link> | <Link to="/">Home</Link>
+          </div>
           <img src={logo} className={styles['App-logo']} alt="logo" />
-          <Welcome />
-          <p>
-            <button onClick={() => setCount((count) => count + 1)}>
-              count is: {count}
-            </button>
-          </p>
-          <p>
-            Edit <code>App.tsx</code> and save to test HMR updates.
-          </p>
-          <p>
-            <a
-              className={styles['App-link']}
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-            {' | '}
-            <a
-              className={styles['App-link']}
-              href="https://vitejs.dev/guide/features.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Vite Docs
-            </a>
-          </p>
-          <Switch>
-            <Route path="/about">
-              <main>About</main>
-            </Route>
-            <Route path="/">
-              <main>Home</main>
-            </Route>
-          </Switch>
+
+          <Routes>
+            <Route path="/about" element={<main>About</main>} />
+
+            <Route
+              path="/"
+              element={
+                <main>
+                  Home
+                  <Welcome />
+                </main>
+              }
+            />
+
+            <Route
+              path="*"
+              element={
+                <main style={{ padding: '1rem' }}>
+                  <h1>404</h1>
+                  <p>There's nothing here!</p>
+                </main>
+              }
+            />
+          </Routes>
         </header>
       </div>
     </Router>

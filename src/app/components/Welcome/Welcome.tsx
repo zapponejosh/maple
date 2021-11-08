@@ -10,7 +10,7 @@ function Welcome(): JSX.Element {
       .then((data) => setMessage(data.message));
   }, []);
 
-  return <p className={classes.message}>{message}</p>;
+  return <h1 className={classes.message}>{message}</h1>;
 }
 
 export default Welcome;
